@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>ক্রেতার বাজার — Kids & Baby | Official Online Shop</title>
+    <meta name="description" content="ক্রেতার বাজার — প্রিমিয়াম কিডস ও বেবি শপ। সেরা মানের বেবি ড্রেস, খেলনা, জুতা ও কেয়ার প্রোডাক্টস।" />
+    <link rel="icon" type="image/jpeg" href="/src/assets/images/master_logo_kb_1787752512425.jpg" />
+    <link rel="apple-touch-icon" href="/src/assets/images/master_logo_kb_1787752512425.jpg" />
+    <meta property="og:title" content="ক্রেতার বাজার — Kids & Baby" />
+    <meta property="og:description" content="প্রিমিয়াম কিডস ও বেবি শপ" />
+    <meta property="og:image" content="/src/assets/images/master_logo_kb_1787752512425.jpg" />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#1e40af" />
+    <script>
+      (function() {
+        // Suppress transient Vite HMR WebSocket connection errors per environment constraints
+        if (typeof window !== 'undefined') {
+          // Safe wrapper for WebSocket to swallow connection failures in proxy environment
+          if (window.WebSocket) {
+            var NativeWebSocket = window.WebSocket;
+            window.WebSocket = function(url, protocols) {
+              try {
+                var ws = protocols !== undefined ? new NativeWebSocket(url, protocols) : new NativeWebSocket(url);
+                ws.addEventListener('error', function(e) {
+                  if (e && e.stopImmediatePropagation) e.stopImmediatePropagation();
+                });
+                return ws;
+              } catch (e) {
+                return {
+                  addEventListener: function() {},
+                  removeEventListener: function() {},
+                  dispatchEvent: function() { return false; },
+                  send: function() {},
+                  close: function() {},
+                  readyState: 3
+                };
+              }
+            };
+            window.WebSocket.prototype = NativeWebSocket.prototype;
+          }
+
+          var origConsoleError = console.error;
+          console.error = function() {
+            var args = Array.prototype.slice.call(arguments);
+            var text = args.map(function(a) { 
+              return typeof a === 'string' ? a : (a && a.message) || String(a); 
+            }).join(' ');
+            if (
+              text.indexOf('WebSocket') !== -1 || 
+              text.indexOf('[vite]') !== -1 || 
+              text.indexOf('vite:ws') !== -1 ||
+              text.indexOf('@vite/client') !== -1
+            ) {
+              return;
+            }
+            origConsoleError.apply(console, arguments);
+          };
+
+          window.addEventListener('unhandledrejection', function(e) {
+            var reason = e && e.reason;
+            var msg = (reason && (reason.message || reason.stack || String(reason))) || '';
+            if (
+              msg.indexOf('WebSocket') !== -1 || 
+              msg.indexOf('vite:ws') !== -1 || 
+              msg.indexOf('@vite/client') !== -1
+            ) {
+              e.preventDefault();
+              if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+            }
+          }, true);
+
+          window.addEventListener('error', function(e) {
+            var msg = (e && (e.message || '')) || '';
+            var filename = (e && (e.filename || '')) || '';
+            var stack = (e && e.error && e.error.stack) || '';
+            if (
+              msg.indexOf('WebSocket') !== -1 || 
+              filename.indexOf('@vite/client') !== -1 || 
+              msg.indexOf('vite:ws') !== -1 ||
+              stack.indexOf('@vite/client') !== -1
+            ) {
+              e.preventDefault();
+              if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+              return true;
+            }
+          }, true);
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-800 selection:bg-amber-400 selection:text-blue-950">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

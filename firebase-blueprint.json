@@ -1,0 +1,187 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "E-commerce product catalog item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "sku": { "type": "string" },
+        "nameBn": { "type": "string" },
+        "nameEn": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "brand": { "type": "string" },
+        "price": { "type": "number" },
+        "discountPrice": { "type": "number" },
+        "stock": { "type": "number" },
+        "isPublished": { "type": "boolean" },
+        "isFeatured": { "type": "boolean" },
+        "isNewArrival": { "type": "boolean" },
+        "isBestSeller": { "type": "boolean" },
+        "isFlashSale": { "type": "boolean" },
+        "ageGroup": { "type": "string" },
+        "ageTextBn": { "type": "string" },
+        "ageTextEn": { "type": "string" },
+        "sizes": { "type": "array", "items": { "type": "string" } },
+        "colors": { "type": "array", "items": { "type": "object" } },
+        "descriptionBn": { "type": "string" },
+        "descriptionEn": { "type": "string" },
+        "specifications": { "type": "array", "items": { "type": "object" } },
+        "images": { "type": "array", "items": { "type": "string" } },
+        "videoUrl": { "type": "string" },
+        "rating": { "type": "number" },
+        "reviewCount": { "type": "number" },
+        "reviews": { "type": "array", "items": { "type": "object" } },
+        "faqs": { "type": "array", "items": { "type": "object" } },
+        "salesCount": { "type": "number" }
+      },
+      "required": ["id", "nameBn", "categoryId", "price", "stock", "isPublished"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer order details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "customerEmail": { "type": "string" },
+        "shippingAddress": { "type": "string" },
+        "city": { "type": "string" },
+        "country": { "type": "string" },
+        "countryName": { "type": "string" },
+        "postalCode": { "type": "string" },
+        "items": { "type": "array", "items": { "type": "object" } },
+        "itemDetails": { "type": "array", "items": { "type": "object" } },
+        "subtotal": { "type": "number" },
+        "shippingCost": { "type": "number" },
+        "discountAmount": { "type": "number" },
+        "total": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "paymentStatus": { "type": "string" },
+        "transactionId": { "type": "string" },
+        "status": { "type": "string" },
+        "trackingNumber": { "type": "string" }
+      },
+      "required": ["id", "customerName", "customerPhone", "shippingAddress", "total", "status"]
+    },
+    "MediaItem": {
+      "title": "MediaItem",
+      "description": "Media gallery photos and video reviews",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "url": { "type": "string" },
+        "thumbnailUrl": { "type": "string" },
+        "titleBn": { "type": "string" },
+        "titleEn": { "type": "string" },
+        "captionBn": { "type": "string" },
+        "captionEn": { "type": "string" },
+        "category": { "type": "string" },
+        "isFeatured": { "type": "boolean" },
+        "linkedProductId": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "viewsCount": { "type": "number" },
+        "likesCount": { "type": "number" }
+      },
+      "required": ["id", "type", "url", "titleBn", "category"]
+    },
+    "HeroSlide": {
+      "title": "HeroSlide",
+      "description": "Dynamic homepage banner slide",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "titleBn": { "type": "string" },
+        "titleEn": { "type": "string" },
+        "subtitleBn": { "type": "string" },
+        "subtitleEn": { "type": "string" },
+        "descriptionBn": { "type": "string" },
+        "descriptionEn": { "type": "string" },
+        "couponCode": { "type": "string" },
+        "image": { "type": "string" },
+        "buttonTextBn": { "type": "string" },
+        "buttonTextEn": { "type": "string" },
+        "buttonLink": { "type": "string" },
+        "isActive": { "type": "boolean" },
+        "bgGradient": { "type": "string" }
+      },
+      "required": ["id", "titleBn", "image", "isActive"]
+    },
+    "HeaderConfig": {
+      "title": "HeaderConfig",
+      "description": "Header title and announcement settings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "titleBn": { "type": "string" },
+        "titleEn": { "type": "string" },
+        "welcomeMessageBn": { "type": "string" },
+        "welcomeMessageEn": { "type": "string" },
+        "promoAnnouncementBn": { "type": "string" },
+        "promoAnnouncementEn": { "type": "string" },
+        "hotlinePhone": { "type": "string" },
+        "bannerImage": { "type": "string" },
+        "buttonTextBn": { "type": "string" },
+        "buttonTextEn": { "type": "string" },
+        "buttonLink": { "type": "string" },
+        "isActive": { "type": "boolean" }
+      },
+      "required": ["id", "titleBn", "isActive"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Customer account profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "avatar": { "type": "string" },
+        "addresses": { "type": "array", "items": { "type": "object" } },
+        "childName": { "type": "string" },
+        "childAgeGroup": { "type": "string" },
+        "childBirthday": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "email"]
+    }
+  },
+  "firestore": {
+    "collections": {
+      "/users/{userId}": {
+        "entity": "UserProfile",
+        "description": "User profiles collection"
+      },
+      "/products/{productId}": {
+        "entity": "Product",
+        "description": "Products collection"
+      },
+      "/orders/{orderId}": {
+        "entity": "Order",
+        "description": "Orders collection"
+      },
+      "/media/{mediaId}": {
+        "entity": "MediaItem",
+        "description": "Media gallery items"
+      },
+      "/hero_slides/{slideId}": {
+        "entity": "HeroSlide",
+        "description": "Hero slider slides"
+      },
+      "/header_configs/{headerId}": {
+        "entity": "HeaderConfig",
+        "description": "Header configurations"
+      },
+      "/settings/{settingId}": {
+        "description": "Application settings and notifications"
+      },
+      "/notifications/{notificationId}": {
+        "description": "Broadcast notifications"
+      }
+    }
+  }
+}

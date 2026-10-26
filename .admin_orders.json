@@ -1,0 +1,154 @@
+[
+  {
+    "id": "KB-261024-X3MI",
+    "date": "2026-10-24",
+    "createdAt": "2026-10-24T15:01:31.085Z",
+    "customerName": "আব্দুল করিম",
+    "customerPhone": "01712345678",
+    "shippingAddress": "বাড়ি ১২, রোড ৪, সেক্টর ৭, উত্তরা, ঢাকা",
+    "city": "inside-dhaka",
+    "country": "BD",
+    "countryName": "Bangladesh",
+    "items": [
+      {
+        "id": "p1",
+        "nameBn": "সফট বেবি নেস্ট",
+        "price": 1450,
+        "discountPrice": 1150,
+        "quantity": 1,
+        "selectedSize": "0-6m"
+      }
+    ],
+    "itemDetails": [
+      {
+        "productId": "p1",
+        "nameBn": "সফট বেবি নেস্ট",
+        "nameEn": "Product",
+        "selectedSize": "0-6m",
+        "selectedColor": {
+          "nameBn": "ডিফল্ট",
+          "nameEn": "Default",
+          "hex": "#000000"
+        },
+        "quantity": 1,
+        "unitPrice": 1150,
+        "totalPrice": 1150,
+        "image": ""
+      }
+    ],
+    "subtotal": 1150,
+    "shippingCost": 60,
+    "discountAmount": 0,
+    "total": 1210,
+    "paymentMethod": "cod",
+    "paymentStatus": "unpaid",
+    "status": "pending",
+    "trackingNumber": "KB-TRK-091085717",
+    "district": "ঢাকা",
+    "area": "উত্তরা"
+  },
+  {
+    "id": "KB-261024-O26G",
+    "date": "2026-10-24",
+    "createdAt": "2026-10-24T15:01:17.805Z",
+    "customerName": "আব্দুল করিম",
+    "customerPhone": "01712345678",
+    "shippingAddress": "বাড়ি ১২, রোড ৪, সেক্টর ৭, উত্তরা, ঢাকা",
+    "city": "inside-dhaka",
+    "country": "BD",
+    "countryName": "Bangladesh",
+    "items": [
+      {
+        "id": "p1",
+        "nameBn": "সফট বেবি নেস্ট",
+        "price": 1450,
+        "discountPrice": 1150,
+        "quantity": 1,
+        "selectedSize": "0-6m"
+      }
+    ],
+    "itemDetails": [
+      {
+        "productId": "p1",
+        "nameBn": "সফট বেবি নেস্ট",
+        "nameEn": "Product",
+        "selectedSize": "0-6m",
+        "selectedColor": {
+          "nameBn": "ডিফল্ট",
+          "nameEn": "Default",
+          "hex": "#000000"
+        },
+        "quantity": 1,
+        "unitPrice": 1150,
+        "totalPrice": 1150,
+        "image": ""
+      }
+    ],
+    "subtotal": 1150,
+    "shippingCost": 60,
+    "discountAmount": 0,
+    "total": 1210,
+    "paymentMethod": "cod",
+    "paymentStatus": "unpaid",
+    "status": "pending",
+    "trackingNumber": "KB-TRK-077806366",
+    "district": "ঢাকা",
+    "area": "উত্তরা"
+  },
+  {
+    "id": "KB-261024-RGW2",
+    "date": "2026-10-24",
+    "createdAt": "2026-10-24T14:11:47.266Z",
+    "customerName": "তানভীর হাসান",
+    "customerPhone": "01712345678",
+    "shippingAddress": "বাড়ি ১২, রোড ৪, ধানমন্ডি, ঢাকা",
+    "city": "inside-dhaka",
+    "country": "BD",
+    "countryName": "Bangladesh",
+    "items": [
+      {
+        "product": {
+          "id": "p-baby-nest-mosquito-bed",
+          "nameBn": "বেবি নেস্ট বেড ও পোর্টেবল মসকিটো নেট সেট",
+          "price": 1850,
+          "discountPrice": 1450,
+          "images": [
+            "https://example.com/test.jpg"
+          ]
+        },
+        "quantity": 2,
+        "selectedSize": "Standard",
+        "selectedColor": {
+          "nameBn": "পিচ কোরাল",
+          "hex": "#FF7F50"
+        }
+      }
+    ],
+    "itemDetails": [
+      {
+        "productId": "p-baby-nest-mosquito-bed",
+        "nameBn": "বেবি নেস্ট বেড ও পোর্টেবল মসকিটো নেট সেট",
+        "nameEn": "Product",
+        "selectedSize": "Standard",
+        "selectedColor": {
+          "nameBn": "পিচ কোরাল",
+          "hex": "#FF7F50"
+        },
+        "quantity": 2,
+        "unitPrice": 1450,
+        "totalPrice": 2900,
+        "image": "https://example.com/test.jpg"
+      }
+    ],
+    "subtotal": 2900,
+    "shippingCost": 60,
+    "discountAmount": 0,
+    "total": 2960,
+    "paymentMethod": "cod",
+    "paymentStatus": "unpaid",
+    "status": "pending",
+    "trackingNumber": "KB-TRK-107266126",
+    "district": "ঢাকা",
+    "area": "ধানমন্ডি"
+  }
+]

@@ -1,0 +1,121 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        (request.auth.token.email != null &&
+         (request.auth.token.email == 'naymulh2005@gmail.com' || 
+          request.auth.token.email.matches('(?i)^naymulh2005@gmail\\.com$') ||
+          request.auth.token.email == 'admin@kretarbazar.com' ||
+          request.auth.token.email.matches('(?i)^admin@kretarbazar\\.com$'))) ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    // Products: public catalog readable by all, management restricted to verified admin
+    match /products/{productId} {
+      allow read: if true;
+      allow create, update: if isAdmin() &&
+                               incoming().nameBn is string &&
+                               incoming().price is number &&
+                               incoming().price >= 0 &&
+                               incoming().stock is number;
+      allow delete: if isAdmin();
+    }
+    
+    // Orders: strictly private; accessible only by verified administrator or the order's authenticated owner.
+    // Preserves guest checkout with strict create validation and initial pending status enforcement.
+    match /orders/{orderId} {
+      allow get: if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
+      allow list: if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
+      allow create: if incoming().id is string &&
+                       incoming().id.size() >= 5 &&
+                       incoming().id.size() <= 64 &&
+                       incoming().customerName is string &&
+                       incoming().customerName.size() > 0 &&
+                       incoming().customerName.size() <= 200 &&
+                       incoming().customerPhone is string &&
+                       incoming().customerPhone.size() > 0 &&
+                       incoming().customerPhone.size() <= 60 &&
+                       incoming().shippingAddress is string &&
+                       incoming().shippingAddress.size() > 0 &&
+                       incoming().shippingAddress.size() <= 1000 &&
+                       incoming().total is number &&
+                       incoming().total >= 0 &&
+                       incoming().status == 'pending' &&
+                       (!('userId' in incoming()) || incoming().userId == null || (isSignedIn() && incoming().userId == request.auth.uid));
+      allow update: if isAdmin();
+      allow delete: if false; // Orders cannot be deleted to prevent accidental loss
+    }
+    
+    // Users collection: strictly private customer profile data
+    match /users/{userId} {
+      allow read: if isAdmin() || (isSignedIn() && request.auth.uid == userId);
+      allow create, update: if isAdmin() || (isSignedIn() && request.auth.uid == userId);
+      allow delete: if isAdmin() || (isSignedIn() && request.auth.uid == userId);
+    }
+
+    // Admins role registry
+    match /admins/{adminId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    // Media gallery items: photos, videos and reviews
+    match /media/{mediaId} {
+      allow read: if true;
+      allow create, delete: if isAdmin();
+      allow update: if isAdmin() || (
+        incoming().diff(existing()).affectedKeys().hasOnly(['viewsCount', 'likesCount'])
+      );
+    }
+    
+    // Hero slides banner management: public read, admin write
+    match /hero_slides/{slideId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+    
+    // Dynamic header configurations: public read, admin write
+    match /header_configs/{headerId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+    
+    // Store settings and phone notifications: public read, admin write
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // Broadcast notifications: public read, admin create/update or guest order notification
+    match /notifications/{notificationId} {
+      allow read: if true;
+      allow create: if isAdmin() || (
+        incoming().type == 'order' &&
+        incoming().id is string &&
+        incoming().id.size() <= 64
+      );
+      allow update, delete: if isAdmin();
+    }
+
+    // Default deny for all other unknown paths (Zero-trust)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

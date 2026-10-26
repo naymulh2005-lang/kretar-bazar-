@@ -1,0 +1,6 @@
+{
+  "name": "ক্রেতার বাজার - Kids & Baby E-Commerce",
+  "description": "Premium Kids & Baby E-commerce store for ages 6 months to 10 years with smart filters, flash sales, user portal, and admin dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
